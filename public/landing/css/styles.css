@@ -1,0 +1,153 @@
+#title {
+  background-color: #cfe8a9;
+  color: black;
+}
+h1 {
+  font-family: "Poppins", sans-serif;
+  font-size: 3.5rem;
+  line-height: 1.5;
+  font-weight: bold;
+}
+h2 {
+  font-family: "Poppins", sans-serif;
+  font-weight: bolder;
+  font-size: 3.5rem;
+  line-height: 1.5;
+}
+h3 {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.5rem;
+  font-weight: bolder;
+}
+p {
+  color: #8f8f8f;
+}
+.container-fluid {
+  padding: 3% 15%;
+}
+body {
+  font-family: "Poppins", sans-serif;
+}
+.logo {
+  height: 250px;
+  width: 500px;
+}
+.navbar {
+  padding: 0 0 4.5rem;
+}
+.navbar-dark .navbar-nav .nav-link {
+  color: black;
+}
+.navbar .navbar-expand-lg .navbar-dark {
+  border-bottom: solid 2px black;
+}
+/* .navbar-dark .navbar-nav .nav-link :hover {
+  color: black;
+} */
+.navbar-brand {
+  font-family: "Poppins", sans-serif;
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.navbar-dark .navbar-brand {
+  color: black;
+}
+.nav-item {
+  padding: 0 18px;
+}
+.nav-item a {
+  color: black;
+}
+.nav-link {
+  font-size: 1.2rem;
+  font-family: "Poppins", sans-serif;
+}
+.download-btn {
+  margin: 5% 3% 5% 0;
+}
+.title-image {
+  width: 500px;
+  height: 450px;
+  /* transform: rotate(25deg); */
+}
+.title-text {
+  font-family: "Poppins", sans-serif;
+  text-transform: capitalize;
+  /* font-size: larger; */
+  color: black;
+  font-weight: 700;
+}
+
+#img1 {
+  width: 35%;
+  height: 300px;
+}
+#img2 {
+  height: 350px;
+  width: 35%;
+}
+#img3 {
+  height: 300px;
+  width: 35%;
+}
+#img4 {
+  height: 300px;
+}
+#img5 {
+  height: 300px;
+  width: 38%;
+}
+
+#image {
+  background-color: #cfe8a9;
+}
+#features {
+  padding: 7% 15%;
+  text-transform: capitalize;
+  border-bottom: 2px solid black;
+  border-top: 2px solid black;
+}
+#features p {
+  text-align: justify;
+}
+.feature-box {
+  text-align: center;
+  padding: 5%;
+}
+#testimonials {
+  text-align: center;
+  background-color: #cfe8a9;
+  color: black;
+}
+#testimonial-carousel {
+  border-bottom: 2px solid black;
+}
+.carousel-item {
+  padding: 7% 15%;
+}
+#image {
+  text-align: center;
+}
+.img-h1 {
+  color: green;
+}
+.test {
+  position: absolute;
+  left: 300px;
+
+  height: 400px;
+  width: 800px;
+}
+
+.testimonial-image {
+  width: 40%;
+  height: 350px;
+  border-radius: 100%;
+  margin: 20px;
+}
+
+.footer {
+  padding-top: 5%;
+  color: #cfe8a9;
+}
