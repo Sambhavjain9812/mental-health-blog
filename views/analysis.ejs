@@ -123,6 +123,7 @@
 
         </div>
     </div>
+
     <script>
         const quizDB = [
             {
@@ -228,7 +229,9 @@
                 showScore.innerHTML = `
                 
         <h3> You scored ${score}/${quizDB.length}</h3>
-        <button class="btn" onclick="location.reload()">Retake the assesment</button>
+        <form action="/score1" method="post">
+        <button class="btn" >Check your Score</button>
+    </form>
 
         `;
 

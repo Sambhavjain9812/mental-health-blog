@@ -7,10 +7,6 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const homeStartingContent =
   "Welcome to the Blogging Section where you can share your thought processes and journeys with the wider audience of the Campus. It is a place for everyone to feel safe and secure  Through this blogging site, you can read others blog as well as write your own journey to guide others on their path ";
-const aboutContent =
-  "Hac habitasse platea dictumst vestibulum rhoncus est pellentesque. Dictumst vestibulum rhoncus est pellentesque elit ullamcorper. Non diam phasellus vestibulum lorem sed. Platea dictumst quisque sagittis purus sit. Egestas sed sed risus pretium quam vulputate dignissim suspendisse. Mauris in aliquam sem fringilla. Semper risus in hendrerit gravida rutrum quisque non tellus orci. Amet massa vitae tortor condimentum lacinia quis vel eros. Enim ut tellus elementum sagittis vitae. Mauris ultrices eros in cursus turpis massa tincidunt dui.";
-const contactContent =
-  "Scelerisque eleifend donec pretium vulputate sapien. Rhoncus urna neque viverra justo nec ultrices. Arcu dui vivamus arcu felis bibendum. Consectetur adipiscing elit duis tristique. Risus viverra adipiscing at in tellus integer feugiat. Sapien nec sagittis aliquam malesuada bibendum arcu vitae. Consequat interdum varius sit amet mattis. Iaculis nunc sed augue lacus. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing elit. Pulvinar elementum integer enim neque. Ultrices gravida dictum fusce ut placerat orci nulla. Mauris in aliquam sem fringilla ut morbi tincidunt. Tortor posuere ac ut consequat semper viverra nam libero.";
 
 require("./db/conn");
 const Register = require("./models/registers");
@@ -19,28 +15,13 @@ const { error } = require("console");
 
 const app = express();
 const staticpath = path.join(__dirname, "../public");
-// const templateview = path.join(__dirname, "../templates/views");
-// const templatepartials = path.join(__dirname, "../templates/partials");
-// app.use(express.static("public"));
-// app.use(express.static(__dirname + "/public"));
+
 
 app.use(express.json());
-// app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.set("view engine", "ejs");
-// app.set("views", templateview);
-// ejs.registerPartials(templatepartials);
 
-// app.use(
-//   "/css",
-//   express.static(path.join(__dirname, "../node_modules/bootstrap/dist/css"))
-// );
-// app.use(
-//   "/js",
-//   express.static(path.join(__dirname, "../node_modules/bootstrap/dist/js"))
-// );
-// app.use("/jq", express.static(path.join(__dirname, "../node_modules/jquery")));
 
 app.use(express.static("public"));
 
@@ -95,6 +76,9 @@ app.post("/register", async (req, res) => {
     res.status(400).send(error);
   }
 });
+app.post("/score1", function (req, res) {
+  res.redirect("/score")
+});
 
 app.post("/login", async (req, res) => {
   try {
@@ -102,8 +86,7 @@ app.post("/login", async (req, res) => {
     const password = req.body.password;
 
     const user_username = await Register.findOne({ username: username });
-    // res.send(useremail);
-    // console.log(useremail);
+    
     const isMatch = await bcrypt.compare(password, user_username.password);
     const token = await user_username.generateAuthToken();
 
