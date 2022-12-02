@@ -5,9 +5,12 @@ const ejs = require("ejs");
 const bodyParser = require("body-parser");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
-const homeStartingContent = "Lacus vel facilisis volutpat est velit egestas dui id ornare. Semper auctor neque vitae tempus quam. Sit amet cursus sit amet dictum sit amet justo. Viverra tellus in hac habitasse. Imperdiet proin fermentum leo vel orci porta. Donec ultrices tincidunt arcu non sodales neque sodales ut. Mattis molestie a iaculis at erat pellentesque adipiscing. Magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies. Adipiscing elit ut aliquam purus sit amet luctus venenatis lectus. Ultrices vitae auctor eu augue ut lectus arcu bibendum at. Odio euismod lacinia at quis risus sed vulputate odio ut. Cursus mattis molestie a iaculis at erat pellentesque adipiscing.";
-const aboutContent = "Hac habitasse platea dictumst vestibulum rhoncus est pellentesque. Dictumst vestibulum rhoncus est pellentesque elit ullamcorper. Non diam phasellus vestibulum lorem sed. Platea dictumst quisque sagittis purus sit. Egestas sed sed risus pretium quam vulputate dignissim suspendisse. Mauris in aliquam sem fringilla. Semper risus in hendrerit gravida rutrum quisque non tellus orci. Amet massa vitae tortor condimentum lacinia quis vel eros. Enim ut tellus elementum sagittis vitae. Mauris ultrices eros in cursus turpis massa tincidunt dui.";
-const contactContent = "Scelerisque eleifend donec pretium vulputate sapien. Rhoncus urna neque viverra justo nec ultrices. Arcu dui vivamus arcu felis bibendum. Consectetur adipiscing elit duis tristique. Risus viverra adipiscing at in tellus integer feugiat. Sapien nec sagittis aliquam malesuada bibendum arcu vitae. Consequat interdum varius sit amet mattis. Iaculis nunc sed augue lacus. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing elit. Pulvinar elementum integer enim neque. Ultrices gravida dictum fusce ut placerat orci nulla. Mauris in aliquam sem fringilla ut morbi tincidunt. Tortor posuere ac ut consequat semper viverra nam libero.";
+const homeStartingContent =
+  "Welcome to the Blogging Section where you can share your thought processes and journeys with the wider audience of the Campus. It is a place for everyone to feel safe and secure  Through this blogging site, you can read others blog as well as write your own journey to guide others on their path ";
+const aboutContent =
+  "Hac habitasse platea dictumst vestibulum rhoncus est pellentesque. Dictumst vestibulum rhoncus est pellentesque elit ullamcorper. Non diam phasellus vestibulum lorem sed. Platea dictumst quisque sagittis purus sit. Egestas sed sed risus pretium quam vulputate dignissim suspendisse. Mauris in aliquam sem fringilla. Semper risus in hendrerit gravida rutrum quisque non tellus orci. Amet massa vitae tortor condimentum lacinia quis vel eros. Enim ut tellus elementum sagittis vitae. Mauris ultrices eros in cursus turpis massa tincidunt dui.";
+const contactContent =
+  "Scelerisque eleifend donec pretium vulputate sapien. Rhoncus urna neque viverra justo nec ultrices. Arcu dui vivamus arcu felis bibendum. Consectetur adipiscing elit duis tristique. Risus viverra adipiscing at in tellus integer feugiat. Sapien nec sagittis aliquam malesuada bibendum arcu vitae. Consequat interdum varius sit amet mattis. Iaculis nunc sed augue lacus. Interdum posuere lorem ipsum dolor sit amet consectetur adipiscing elit. Pulvinar elementum integer enim neque. Ultrices gravida dictum fusce ut placerat orci nulla. Mauris in aliquam sem fringilla ut morbi tincidunt. Tortor posuere ac ut consequat semper viverra nam libero.";
 
 require("./db/conn");
 const Register = require("./models/registers");
@@ -23,7 +26,7 @@ const staticpath = path.join(__dirname, "../public");
 
 app.use(express.json());
 // app.use(express.urlencoded({ extended: false }));
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.set("view engine", "ejs");
 // app.set("views", templateview);
@@ -58,6 +61,9 @@ app.get("/login", (req, res) => {
 });
 app.get("/register", (req, res) => {
   res.render("register");
+});
+app.get("/score", (req, res) => {
+  res.render("score");
 });
 app.post("/register", async (req, res) => {
   try {
@@ -105,52 +111,51 @@ app.post("/login", async (req, res) => {
     if (isMatch) {
       res.status(201).render("landing");
     } else {
-      res.send("invalid password");
+      res.send("Invalid password");
     }
   } catch (error) {
     res.status(400).send(error);
     console.log(error);
   }
 });
-app.get("/post", function(req, res){
-
-  Post.find({}, function(err, posts){
+app.get("/post", function (req, res) {
+  Post.find({}, function (err, posts) {
     res.render("home", {
       startingContent: homeStartingContent,
-      posts: posts
-      });
+      posts: posts,
+    });
   });
 });
 
-app.get("/compose", function(req, res){
+app.get("/compose", function (req, res) {
   res.render("compose");
 });
+app.get("/analysis", function (req, res) {
+  res.render("analysis");
+});
 
-app.post("/compose", function(req, res){
+app.post("/compose", function (req, res) {
   const post = new Post({
     title: req.body.postTitle,
-    content: req.body.postBody
+    content: req.body.postBody,
   });
 
-
-  post.save(function(err){
-    if (!err){
-        res.redirect("/");
+  post.save(function (err) {
+    if (!err) {
+      res.redirect("/post");
     }
   });
 });
 
-app.get("/posts/:postId", function(req, res){
+app.get("/posts/:postId", function (req, res) {
+  const requestedPostId = req.params.postId;
 
-const requestedPostId = req.params.postId;
-
-  Post.findOne({_id: requestedPostId}, function(err, post){
+  Post.findOne({ _id: requestedPostId }, function (err, post) {
     res.render("post", {
       title: post.title,
-      content: post.content
+      content: post.content,
     });
   });
-
 });
 
 // app.get("/about", function(req, res){

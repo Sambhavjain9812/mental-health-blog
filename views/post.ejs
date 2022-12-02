@@ -6,20 +6,134 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <title>Document</title>
+    <title>
+        <%= title %>
+    </title>
 </head>
 
 <body>
+    <style>
+        /* .navbar {
+          padding-top: 15px;
+          padding-bottom: 15px;
+          border: 0;
+          border-radius: 0;
+          margin-bottom: 0;
+          font-size: 12px;
+          letter-spacing: 5px;
+        } */
+        h1 {
+            font-family: "Poppins", sans-serif;
+            font-size: 3.5rem;
+            line-height: 1.5;
+            font-weight: bold;
+        }
+
+        h2 {
+            font-family: "Poppins", sans-serif;
+            font-weight: bolder;
+            font-size: 3.5rem;
+            line-height: 1.5;
+        }
+
+        h3 {
+            font-family: "Poppins", sans-serif;
+            font-size: 1.5rem;
+            font-weight: bolder;
+        }
+
+        .navbar {
+            padding: 0 0 10px;
+        }
+
+        .navbar-dark .navbar-nav .nav-link {
+            color: black;
+        }
+
+        .logo {
+            height: 250px;
+            width: 500px;
+        }
+
+        .navbar-brand {
+            font-family: "Poppins", sans-serif;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        .nav-item {
+            padding: 0 18px;
+            font-size: large;
+        }
+
+        .nav-item a {
+            color: black;
+        }
+
+        .container-fluid {
+            padding: 3% 10%;
+        }
+
+        /* .navbar-nav li a:hover {
+          color: #1abc9c !important;
+        } */
+        body {
+            font-family: "Poppins", sans-serif;
+        }
+
+        .title {
+            background-color: #cfe8a9;
+            color: black;
+        }
+    </style>
+    <section class="title">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg">
+                <a class="navbar-brand" href="/landing">
+                    <img src="../public/images/logo.jpeg" alt="logo" class="logo" />
+                </a>
+
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 navbar-right">
+
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/login">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/post">Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/analysis">Analysis</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/remedies">Remedies</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/faq">FAQ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/compose">Compose</a>
+                        </li>
+                </div>
+        </div>
+        </nav>
+    </section>
     <div class="container">
-        <%- include("partials/navbar.ejs"); -%>
 
 
-            <h1>
-                <%=title%>
-            </h1>
-            <p>
-                <%=content%>
-            </p>
+
+        <h1>
+            <%=title%>
+        </h1>
+        <p>
+            <%=content%>
+        </p>
     </div>
 </body>
 
